@@ -43,10 +43,10 @@ def get_nutrition(dish_name):
 def getTopYouTubeVideos(dish_name):
     """Get top rated video recipes of dish."""
     system_message="You are a helpful assistant that provides users with the top 5 best-rated YouTube videos for a given recipe. Search for the most relevant and highly-rated YouTube videos based on views, likes, and engagement. Return the video title, a short description, and the YouTube link for each. Ensure that the results are recent and high quality.Give ratings, views and likes in separate lines."
-    nutritional_prompt=ChatPromptTemplate([("system", system_message), ("user", "Find the best-rated YouTube videos for making {dish_name}. Give atmost 3 results")])
+    video_prompt=ChatPromptTemplate([("system", system_message), ("user", "Find the best-rated YouTube videos for making {dish_name}. Give atmost 3 results")])
     
-    nutrition_chain = nutritional_prompt | llm| StrOutputParser()
-    return nutrition_chain.invoke({"dish_name": dish_name})
+    video_chain = video_prompt | llm| StrOutputParser()
+    return video_chain.invoke({"dish_name": dish_name})
 
 
 st.title(" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  :rainbow[_DISHCOVERY_] :ramen: 🔍")
